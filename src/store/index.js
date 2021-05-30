@@ -17,7 +17,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    fetchExchangeRates({ commit }, fromCurrency = 'EUR') {
+    fetchExchangeRates({ commit }, fromCurrency) {
       API.get(`latest?access_key=${API_KEY}&format=1&base=${fromCurrency}`)
         .then((response) => {
           commit('SET_RATES', response.data.rates);
