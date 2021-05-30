@@ -1,6 +1,8 @@
 <template>
   <p class="countdown">
-    Updating currency rates in {{ new Date(timerCount * 1000).toISOString().substr(11, 8) }}
+    {{
+      `${$t("updatingCurrencyRates")} ${new Date(timerCount * 1000).toISOString().substr(11, 8)}`
+    }}
   </p>
 </template>
 

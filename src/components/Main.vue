@@ -1,16 +1,16 @@
 <template>
   <v-row>
-    <v-col cols="12" sm="2"></v-col>
+    <v-col cols="12" sm="2" />
     <v-col cols="12" sm="8" class="text-center">
       <v-card rounded="lg" class="pa-5 align-center" min-height="50vh">
         <p class="text-h4 py-5">
-          <b>Victor's Currency Converter</b>
+          <b>{{ $t("appTitle") }}</b>
         </p>
         <v-row>
           <v-col cols="12" sm="4">
             <v-text-field
               outlined
-              label="Amount"
+              :label="$t('amount')"
               v-model="valueToConvert"
               @click="displayConvertedValue = false"
               type="number"
@@ -20,22 +20,24 @@
             <v-select
               disabled
               outlined
+              :label="$t('from')"
               v-model="fromCurrency"
               :items="currencies"
-              label="From"
-            ></v-select>
+            />
           </v-col>
           <v-col cols="12" sm="4">
             <v-select
               outlined
               v-model="toCurrency"
               :items="currencies"
-              label="To"
+              :label="$t('to')"
               @click="displayConvertedValue = false"
-            ></v-select>
+            />
           </v-col>
         </v-row>
-        <v-btn large color="primary" @click="convertValue()" :disabled="!toCurrency">Convert</v-btn>
+        <v-btn large color="primary" @click="convertValue()" :disabled="!toCurrency">{{
+          $t("convert")
+        }}</v-btn>
         <p class="pt-15" v-if="displayConvertedValue">
           <b class="text-h5"> {{ `${currencyFormatter(fromCurrency, valueToConvert)} = ` }} </b>
           <b class="text-h4">
@@ -45,7 +47,7 @@
       </v-card>
       <Countdown class="py-5" />
     </v-col>
-    <v-col cols="12" sm="2"></v-col>
+    <v-col cols="12" sm="2" />
   </v-row>
 </template>
 

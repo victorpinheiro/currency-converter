@@ -1,0 +1,10 @@
+{
+  "appTitle": "Conversor de moedas do Victor",
+  "amount": "Valor",
+  "from": "De",
+  "to": "Para",
+  "convert": "Converter",
+  "updatingCurrencyRates": "Atualizando taxas em",
+  "madeWith": "Feito com",
+  "by": "por"
+}

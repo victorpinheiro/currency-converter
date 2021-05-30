@@ -1,23 +1,18 @@
 <template>
   <v-app-bar app color="primary" class="white--text">
     <v-toolbar-title>Currency Converter</v-toolbar-title>
-    <v-spacer></v-spacer>
-    <v-btn icon @click="toggleDarkTheme()">
-      <v-icon color="white">mdi-theme-light-dark</v-icon>
-    </v-btn>
+    <v-spacer />
+    <ThemeSelector />
+    <LanguageSelector />
   </v-app-bar>
 </template>
 
 <script>
+import LanguageSelector from '@/components/LanguageSelector.vue';
+import ThemeSelector from '@/components/ThemeSelector.vue';
+
 export default {
   name: 'Header',
-  methods: {
-    toggleDarkTheme() {
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
-    },
-  },
+  components: { ThemeSelector, LanguageSelector },
 };
 </script>
-
-<style>
-</style>

@@ -1,0 +1,10 @@
+{
+  "appTitle": "Victor's currency converter",
+  "amount": "Amount",
+  "from": "From",
+  "to": "To",
+  "convert": "Convert",
+  "updatingCurrencyRates": "Updating currency rates in",
+  "madeWith": "Made with",
+  "by": "by"
+}
