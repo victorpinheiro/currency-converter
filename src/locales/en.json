@@ -4,7 +4,13 @@
   "from": "From",
   "to": "To",
   "convert": "Convert",
-  "updatingCurrencyRates": "Updating currency rates in",
+  "updatingCurrencyRates": "Updating rates at",
   "madeWith": "Made with",
-  "by": "by"
+  "by": "by",
+  "converter": "converter",
+  "converterRates": "Conversion rates",
+  "valuesAreRounded": "Values are rounded to two decimal places",
+  "lastUpdate": "Last updated on",
+  "currencyName": "Currency name",
+  "currencyRate": "Current rate"
 }

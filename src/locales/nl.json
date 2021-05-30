@@ -1,10 +1,16 @@
 {
-  "appTitle": "Valutacalculator van Victor",
+  "appTitle": "Victor's valuta-omzetter",
   "amount": "Bedrag",
   "from": "Van",
-  "to": "Naar",
+  "to": "Aan",
   "convert": "Converteren",
-  "updatingCurrencyRates": "Valutakoersen bijwerken in",
+  "updatingCurrencyRates": "Updating tarieven bij",
   "madeWith": "Gemaakt met",
-  "by": "door"
+  "by": "by",
+  "converter": "converter",
+  "converterRates": "Conversiepercentages",
+  "valuesAreRounded": "Waarden worden afgerond op twee decimalen",
+  "lastUpdate": "Laatst bijgewerkt op",
+  "currencyName": "Valutanaam",
+  "currencyRate": "Huidige koers"
 }

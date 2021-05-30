@@ -6,5 +6,11 @@
   "convert": "Converter",
   "updatingCurrencyRates": "Atualizando taxas em",
   "madeWith": "Feito com",
-  "by": "por"
+  "by": "por",
+  "converter": "Conversor",
+  "converterRates": "Taxas de conversão",
+  "valuesAreRounded": "Os valores são arredondados em duas casas decimais",
+  "lastUpdate": "Última atualização em",
+  "currencyName": "Nome da moeda",
+  "currencyRate": "Taxa atual"
 }

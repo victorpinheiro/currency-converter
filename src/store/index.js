@@ -13,20 +13,21 @@ export default new Vuex.Store({
   mutations: {
     SET_RATES(state, rates) {
       state.rates = rates;
-      state.currencies = Object.keys(rates);
+    },
+    SET_CURRENCIES(state, currencies) {
+      state.currencies = Object.keys(currencies);
     },
   },
   actions: {
     fetchExchangeRates({ commit }, fromCurrency) {
-      API.get(`latest?access_key=${API_KEY}&format=1&base=${fromCurrency}`)
-        .then((response) => {
-          commit('SET_RATES', response.data.rates);
-        });
+      API.get(`latest?access_key=${API_KEY}&format=1&base=${fromCurrency}`).then((response) => {
+        commit('SET_RATES', response.data.rates);
+        commit('SET_CURRENCIES', response.data.rates);
+      });
     },
   },
   getters: {
     getAllCurrencies: (state) => state.currencies,
-  },
-  modules: {
+    getRates: (state) => state.rates,
   },
 });

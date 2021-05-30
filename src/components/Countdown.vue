@@ -1,8 +1,14 @@
 <template>
   <p class="countdown">
+    <small>
     {{
-      `${$t("updatingCurrencyRates")} ${new Date(timerCount * 1000).toISOString().substr(11, 8)}`
+      `${$t("lastUpdate")} ${requestTime}. ${$t("updatingCurrencyRates")} ${new Date(
+        timerCount * 1000
+      )
+        .toISOString()
+        .substr(11, 8)}`
     }}
+    </small>
   </p>
 </template>
 
@@ -14,7 +20,11 @@ export default {
   mixins: [mixin],
   data: () => ({
     timerCount: 3600,
+    requestTime: 0,
   }),
+  mounted() {
+    this.requestTime = new Date().toLocaleString();
+  },
   watch: {
     timerCount: {
       handler(value) {
