@@ -68,7 +68,6 @@ export default {
   methods: {
     convertValue() {
       this.fetchExchangeRates(this.fromCurrency).then(() => {
-        console.log(this.$store.state.rates);
         this.convertedValue = this.valueToConvert * this.$store.state.rates[this.toCurrency];
         this.displayConvertedValue = true;
       });
