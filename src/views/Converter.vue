@@ -12,11 +12,11 @@
       </v-col>
       <v-col cols="12" sm="4">
         <v-select
-          disabled
           outlined
           :label="$t('from')"
           v-model="fromCurrency"
           :items="currencies"
+          @click="displayConvertedValue = false"
         />
       </v-col>
       <v-col cols="12" sm="4">
@@ -35,11 +35,11 @@
     <div v-if="displayConvertedValue">
       <p class="pt-15">
         <b class="text-h5"> {{ `${currencyFormatter(fromCurrency, valueToConvert)} = ` }} </b>
-        <b class="text-h4">
-          {{ currencyFormatter(toCurrency, convertedValue) }}*
-        </b>
+        <b class="text-h4"> {{ currencyFormatter(toCurrency, convertedValue) }}* </b>
       </p>
-      <p><small>*{{ $t("valuesAreRounded") }}</small></p>
+      <p>
+        <small>*{{ $t("valuesAreRounded") }}</small>
+      </p>
     </div>
   </div>
 </template>
@@ -56,19 +56,22 @@ export default {
     ...mapGetters({ rates: 'getRates' }),
   },
   mounted() {
-    this.fetchExchangeRates('EUR');
+    this.fetchExchangeRates();
   },
   data: () => ({
     toCurrency: null,
     valueToConvert: null,
     convertedValue: null,
-    fromCurrency: 'EUR',
+    fromCurrency: null,
     displayConvertedValue: false,
   }),
   methods: {
     convertValue() {
-      this.convertedValue = this.valueToConvert * this.rates[this.toCurrency];
-      this.displayConvertedValue = true;
+      this.fetchExchangeRates(this.fromCurrency).then(() => {
+        console.log(this.$store.state.rates);
+        this.convertedValue = this.valueToConvert * this.$store.state.rates[this.toCurrency];
+        this.displayConvertedValue = true;
+      });
     },
     currencyFormatter(currency, value) {
       return new Intl.NumberFormat(this.userLanguage, {

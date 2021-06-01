@@ -1,7 +1,7 @@
 export default {
   methods: {
-    fetchExchangeRates(fromCurrency) {
-      this.$store.dispatch('fetchExchangeRates', fromCurrency);
+    async fetchExchangeRates(fromCurrency) {
+      await this.$store.dispatch('fetchExchangeRates', fromCurrency);
     },
   },
   data: () => ({

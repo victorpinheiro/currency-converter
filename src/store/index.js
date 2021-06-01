@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import API from '@/api';
-import API_KEY from '@/config';
 
 Vue.use(Vuex);
 
@@ -19,10 +18,12 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    fetchExchangeRates({ commit }, fromCurrency) {
-      API.get(`latest?access_key=${API_KEY}&format=1&base=${fromCurrency}`).then((response) => {
+    fetchExchangeRates({ commit }, fromCurrency = 'EUR') {
+      API.get(`latest?base=${fromCurrency}`).then((response) => {
         commit('SET_RATES', response.data.rates);
         commit('SET_CURRENCIES', response.data.rates);
+      }, (error) => {
+        window.alert(error);
       });
     },
   },

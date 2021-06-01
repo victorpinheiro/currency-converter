@@ -9,7 +9,7 @@
   "by": "by",
   "converter": "converter",
   "converterRates": "Conversion rates",
-  "valuesAreRounded": "Values are rounded to two decimal places",
+  "valuesAreRounded": "Values are rounded to two decimal digits",
   "lastUpdate": "Last updated on",
   "currencyName": "Currency name",
   "currencyRate": "Current rate"

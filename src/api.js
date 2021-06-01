@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://api.exchangeratesapi.io/v1/';
+const API_URL = 'https://api.exchangerate.host/';
 
 const API = axios.create({
   baseURL: API_URL,

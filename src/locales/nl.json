@@ -12,5 +12,5 @@
   "valuesAreRounded": "Waarden worden afgerond op twee decimalen",
   "lastUpdate": "Laatst bijgewerkt op",
   "currencyName": "Valutanaam",
-  "currencyRate": "Huidige koers"
+  "currencyRate": "Decimale cijfers"
 }
