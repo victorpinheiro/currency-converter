@@ -1,12 +1,18 @@
 <template>
   <div>
+    <v-overlay :value="fetching"></v-overlay>
+    <v-progress-circular
+      indeterminate
+      color="primary"
+      v-if="fetching"
+    ></v-progress-circular>
     <v-row class="py-5">
       <v-col cols="12" sm="4">
         <v-text-field
           outlined
           :label="$t('amount')"
           v-model="valueToConvert"
-          @click="displayConvertedValue = false"
+          @click="displayResult(false)"
           type="number"
         ></v-text-field>
       </v-col>
@@ -16,7 +22,7 @@
           :label="$t('from')"
           v-model="fromCurrency"
           :items="currencies"
-          @click="displayConvertedValue = false"
+          @click="displayResult(false)"
         />
       </v-col>
       <v-col cols="12" sm="4">
@@ -25,11 +31,16 @@
           v-model="toCurrency"
           :items="currencies"
           :label="$t('to')"
-          @click="displayConvertedValue = false"
+          @click="displayResult(false)"
         />
       </v-col>
     </v-row>
-    <v-btn large color="primary" @click="convertValue()" :disabled="!toCurrency">
+    <v-btn
+      large
+      color="primary"
+      @click="convertValue()"
+      :disabled="!toCurrency || !valueToConvert || !fromCurrency"
+    >
       {{ $t("convert") }}
     </v-btn>
     <div v-if="displayConvertedValue">
@@ -41,6 +52,7 @@
         <small>*{{ $t("valuesAreRounded") }}</small>
       </p>
     </div>
+
   </div>
 </template>
 
@@ -64,13 +76,21 @@ export default {
     convertedValue: null,
     fromCurrency: null,
     displayConvertedValue: false,
+    fetching: false,
   }),
   methods: {
     convertValue() {
+      this.fetching = true;
       this.fetchExchangeRates(this.fromCurrency).then(() => {
-        this.convertedValue = this.valueToConvert * this.$store.state.rates[this.toCurrency];
-        this.displayConvertedValue = true;
+        setTimeout(() => { // This timeout is a quick fix to get the rates always updated.
+          this.convertedValue = this.valueToConvert * this.rates[this.toCurrency];
+          this.displayResult(true);
+          this.fetching = false;
+        }, 800);
       });
+    },
+    displayResult(value) {
+      this.displayConvertedValue = value;
     },
     currencyFormatter(currency, value) {
       return new Intl.NumberFormat(this.userLanguage, {
